@@ -40,7 +40,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-terracotta-400" />
-                <span className="text-sage-200 text-sm">083609 67932</span>
+                <span className="text-sage-200 text-sm">+91 8360967932</span>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@ const Footer = () => {
 
         <div className="border-t border-sage-700 mt-8 pt-8 text-center">
           <p className="text-sage-200 text-sm">
-            © 2024 IHA. All rights reserved. Made with ❤️ for art lovers.
+            © 2025 IHABYHIMANI. All rights reserved. Made with ❤️ for art lovers by Ayush Rai.
           </p>
         </div>
       </div>

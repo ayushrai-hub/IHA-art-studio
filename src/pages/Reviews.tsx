@@ -1,45 +1,46 @@
 import React from 'react';
 import { Star } from 'lucide-react';
-import { testimonials } from '../data/testimonials';
+import { testimonials, getAvatarUrl } from '../data/testimonials';
 
 const Reviews = () => {
+  // Add avatar URLs to all testimonials
   const extendedTestimonials = [
     ...testimonials,
     {
-      name: 'Kavya Reddy',
-      workshop: 'Abstract Expression',
-      quote: 'The abstract workshop helped me let go of perfectionism and embrace the joy of creating. It was liberating and transformative.',
-      image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200'
+      name: 'Diksha Kumar',
+      workshop: 'Workshop',
+      quote: 'Watching your journey over the past two years has been truly inspiring. Your passion for art and craft is contagious, and your workshops are a testament to your talent and dedication.',
+      image: getAvatarUrl('Diksha Kumar')
     },
     {
-      name: 'Rohit Jain',
-      workshop: 'Nature Journaling',
-      quote: 'As a busy professional, this workshop helped me slow down and appreciate the beauty in everyday nature. Highly therapeutic!',
-      image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=200'
+      name: 'Jhanvi S',
+      workshop: 'Workshop',
+      quote: 'She is a fabulous artist and had lots of fun attending her workshop! Have been following her work for past 2 years and her work has been just wonderful',
+      image: getAvatarUrl('Jhanvi S')
     },
     {
-      name: 'Deepika Singh',
-      workshop: 'Mandala Meditation Art',
-      quote: 'The meditative aspect combined with artistic creation was exactly what I needed for my mental health journey.',
-      image: 'https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=200'
+      name: 'Upasana Sharma',
+      workshop: 'Workshop',
+      quote: 'It was soo nice working with you mam..the way you deal with your costumers is remarkably good. Would love to be a part of your further workshops as well',
+      image: getAvatarUrl('Upasana Sharma')
     },
     {
-      name: 'Amit Sharma',
-      workshop: 'Pottery & Mindfulness',
-      quote: 'Working with clay taught me patience and mindfulness. The instructor created such a peaceful, non-judgmental environment.',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200'
+      name: 'Kriti Sharma',
+      workshop: 'Workshop',
+      quote: 'We amazing craft dedicated peaceful experience, A must try with ur girl gang',
+      image: getAvatarUrl('Kriti Sharma')
     },
     {
-      name: 'Riya Malhotra',
-      workshop: 'Watercolor Dreams',
-      quote: 'I came as a complete beginner and left feeling like an artist. The gentle guidance and encouragement made all the difference.',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200'
+      name: 'Kunjal Mittal',
+      workshop: 'Workshop',
+      quote: 'It was my first time attending a workshop. And it was one of the best experience. Himani di and everyone present there were very helpful and friendly. I will always look forward to attend more workshops with her 🫶',
+      image: getAvatarUrl('Kunjal Mittal')
     },
     {
-      name: 'Sanjay Kumar',
-      workshop: 'Textile Art Workshop',
-      quote: 'The textile workshop opened up a whole new world of creativity for me. I loved learning traditional techniques in a modern setting.',
-      image: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=200'
+      name: 'Prabhat Jain',
+      workshop: 'Workshop',
+      quote: 'Very detailed workshop right from the basics. Thank you for an amazing learning and experience.',
+      image: getAvatarUrl('Prabhat Jain')
     }
   ];
 
@@ -64,16 +65,16 @@ const Reviews = () => {
             <div className="text-sage-600">Happy Artists</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-terracotta-600 mb-2">4.9</div>
+            <div className="text-4xl font-bold text-terracotta-600 mb-2">5.0</div>
             <div className="text-sage-600">Average Rating</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-terracotta-600 mb-2">50+</div>
+            <div className="text-4xl font-bold text-terracotta-600 mb-2">40+</div>
             <div className="text-sage-600">Workshops Completed</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-terracotta-600 mb-2">95%</div>
-            <div className="text-sage-600">Would Recommend</div>
+            <div className="text-sage-600">Recommended</div>
           </div>
         </div>
       </section>
@@ -88,19 +89,17 @@ const Reviews = () => {
               ))}
             </div>
             <blockquote className="text-xl lg:text-2xl text-sage-700 italic leading-relaxed mb-8">
-              "IHA's workshops have been transformative for me. The combination of artistic guidance, 
-              emotional support, and community connection has helped me through some of my most challenging times. 
-              Art truly became my therapy, and I found a family in this creative community."
+              "I recently attended an art and craft workshop by Iha by Himani, and it was a truly enriching experience. The workshop was well-organized, with a warm and welcoming atmosphere that allowed everyone to express their creativity freely. Himani’s expertise and patient guidance made even complex techniques feel approachable. I left feeling inspired and equipped with new skills and a unique piece of art to cherish. Highly recommended for anyone looking to explore their artistic side!"
             </blockquote>
             <div className="flex items-center justify-center">
               <img 
-                src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200" 
+                src={getAvatarUrl('Shubhanshi Mani Tripathi')} 
                 alt="Featured reviewer"
                 className="w-16 h-16 rounded-full object-cover mr-4"
               />
               <div className="text-left">
-                <div className="font-semibold text-sage-800">Priya Sharma</div>
-                <div className="text-sage-500">Watercolor Dreams Workshop</div>
+                <div className="font-semibold text-sage-800">Shubhanshi Mani Tripathi</div>
+                <div className="text-sage-500">Art and Craft Workshop</div>
               </div>
             </div>
           </div>

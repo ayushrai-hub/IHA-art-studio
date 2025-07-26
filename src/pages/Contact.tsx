@@ -1,290 +1,379 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Instagram, Send, CheckCircle } from 'lucide-react';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { Container, Section, Typography, Button } from '../components';
 
-const Contact = () => {
+// WhatsApp contact number
+const WHATSAPP_NUMBER = '918360967932';
+const PHONE_NUMBER = '+91 83609 67932';
+const EMAIL = 'ihabyhimani@gmail.com';
+const INSTAGRAM_URL = 'https://www.instagram.com/ihabyhimani/';
+const YOUTUBE_URL = 'https://www.youtube.com/@ihabyhimani8';
+
+const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
     phone: '',
     subject: '',
     message: ''
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend or email service
+    // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
-    setIsSubmitted(true);
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      });
-    }, 3000);
+    // Show success message (you can replace this with a toast notification)
+    alert('Thank you for your message! We will get back to you soon.');
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: ''
+    });
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
   return (
-    <div className="py-12">
-      {/* Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-serif font-bold text-sage-800 mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-lg text-sage-600 max-w-3xl mx-auto">
-            Have questions about our workshops? Want to book a private session? 
-            Or just want to chat about art and creativity? We'd love to hear from you!
-          </p>
-        </div>
-      </section>
+    <>
+      {/* Hero Section */}
+      <Section className="bg-sage-50">
+        <Container className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Typography variant="h1" className="mb-4">
+              Get in Touch
+            </Typography>
+            <Typography variant="subtitle1" className="max-w-2xl mx-auto">
+              Have questions or want to book a session? Reach out to us and we'll get back to you as soon as possible.
+            </Typography>
+          </motion.div>
+        </Container>
+      </Section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-serif font-bold text-sage-800 mb-6">
-              Send us a Message
-            </h2>
-            
-            {!isSubmitted ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-sage-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:ring-2 focus:ring-terracotta-500 focus:border-transparent transition-colors duration-200"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-sage-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:ring-2 focus:ring-terracotta-500 focus:border-transparent transition-colors duration-200"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-sage-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:ring-2 focus:ring-terracotta-500 focus:border-transparent transition-colors duration-200"
-                      placeholder="+91 12345 67890"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-sage-700 mb-2">
-                      Subject *
-                    </label>
-                    <select
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:ring-2 focus:ring-terracotta-500 focus:border-transparent transition-colors duration-200"
-                    >
-                      <option value="">Select a subject</option>
-                      <option value="workshop-inquiry">Workshop Inquiry</option>
-                      <option value="private-session">Private Session</option>
-                      <option value="corporate-workshop">Corporate Workshop</option>
-                      <option value="collaboration">Collaboration</option>
-                      <option value="general">General Question</option>
-                    </select>
-                  </div>
-                </div>
-
+          <motion.div
+            className="bg-white rounded-2xl shadow-lg p-8"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Typography variant="h2" className="mb-6">Send Us a Message</Typography>
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-sage-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
+                  <label htmlFor="name" className="block text-sm font-medium text-sage-700 mb-1">Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-sage-300 rounded-md focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
+                    placeholder="Your name"
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:ring-2 focus:ring-terracotta-500 focus:border-transparent transition-colors duration-200"
-                    placeholder="Tell us about your inquiry, questions, or how we can help you..."
                   />
                 </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-terracotta-600 text-white py-4 px-6 rounded-xl hover:bg-terracotta-700 transition-colors duration-200 font-medium flex items-center justify-center"
-                >
-                  <Send className="mr-2 h-5 w-5" />
-                  Send Message
-                </button>
-              </form>
-            ) : (
-              <div className="text-center py-8">
-                <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-sage-800 mb-2">
-                  Message Sent Successfully!
-                </h3>
-                <p className="text-sage-600">
-                  Thank you for reaching out. We'll get back to you within 24 hours.
-                </p>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-sage-700 mb-1">Email *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-sage-300 rounded-md focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                </div>
               </div>
-            )}
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-sage-700 mb-1">Phone Number *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-sage-300 rounded-md focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
+                    placeholder="+91 XXXXX XXXXX"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-sage-700 mb-1">Subject *</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-sage-300 rounded-md focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
+                    placeholder="How can we help?"
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-sage-700 mb-1">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={5}
+                  className="w-full px-4 py-2 border border-sage-300 rounded-md focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
+                  placeholder="Your message here..."
+                  required
+                ></textarea>
+              </div>
+              <div className="text-sm text-sage-600 mb-4">
+                * Required fields
+              </div>
+              <Button 
+                type="submit" 
+                variant="primary" 
+                className="w-full"
+              >
+                Send Message
+              </Button>
+            </form>
+          </motion.div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
-            {/* Contact Details */}
-            <div className="bg-sage-50 rounded-2xl p-8">
-              <h2 className="text-2xl font-serif font-bold text-sage-800 mb-6">
-                Contact Information
-              </h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-terracotta-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-6 w-6 text-terracotta-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sage-800 mb-1">Email</h3>
-                    <p className="text-sage-600">hello@iha-art.com</p>
-                    <p className="text-sm text-sage-500">We respond within 24 hours</p>
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div>
+              <Typography variant="h2" className="mb-6">Contact Information</Typography>
+              <Typography variant="body1" className="mb-6">
+                We'd love to hear from you! Join to get latest updates and reach out through any of these channels.
+              </Typography>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <div className="bg-terracotta-100 p-3 rounded-full text-terracotta-600 mr-4">
+                  <FaMapMarkerAlt className="w-5 h-5" />
+                </div>
+                <div>
+                  <Typography variant="subtitle1" className="text-sage-800">Our Studio</Typography>
+                  <Typography variant="body2" className="text-sage-600">
+                    ihabyhimani Art Studio<br />
+                    SCO-22, Gurudwara Road, Sector 8-B<br />
+                    Chandigarh-160009, India
+                  </Typography>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <div className="bg-terracotta-100 p-3 rounded-full text-terracotta-600 mr-4">
+                  <FaPhone className="w-5 h-5" />
+                </div>
+                <div>
+                  <Typography variant="subtitle1" className="text-sage-800">Phone</Typography>
+                  <a href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`} className="text-sage-600 hover:text-terracotta-600 transition-colors">
+                    {PHONE_NUMBER}
+                  </a>
+                  <div className="mt-2">
+                    <div className="inline-block bg-green-500 p-0.5 rounded-md">
+                      <a 
+                        href={`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center bg-white text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium"
+                      >
+                        <span className="mr-1">💬</span> Chat on WhatsApp
+                      </a>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-sage-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-6 w-6 text-sage-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sage-800 mb-1">Phone</h3>
-                    <p className="text-sage-600">+91 98765 43210</p>
-                    <p className="text-sm text-sage-500">Mon-Fri, 10 AM - 6 PM</p>
+              <div className="flex items-start">
+                <div className="bg-terracotta-100 p-3 rounded-full text-terracotta-600 mr-4">
+                  <FaInstagram className="w-5 h-5" />
+                </div>
+                <div>
+                  <Typography variant="subtitle1" className="text-gray-900 font-medium">
+                    Instagram Channel
+                  </Typography>
+                  <div className="inline-block bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 p-0.5 rounded-md">
+                    <a 
+                      href={INSTAGRAM_URL} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center bg-white text-gray-900 px-3 py-1 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium"
+                    >
+                      Join to get latest updates
+                    </a>
                   </div>
                 </div>
+              </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-terracotta-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-6 w-6 text-terracotta-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sage-800 mb-1">Studio Locations</h3>
-                    <p className="text-sage-600">Art Studio, Koramangala, Bangalore</p>
-                    <p className="text-sage-600">Clay Studio, Whitefield, Bangalore</p>
-                  </div>
+              <div className="flex items-start">
+                <div className="bg-terracotta-100 p-3 rounded-full text-terracotta-600 mr-4">
+                  <FaEnvelope className="w-5 h-5" />
                 </div>
+                <div>
+                  <Typography variant="subtitle1" className="text-sage-800">Email</Typography>
+                  <a href={`mailto:${EMAIL}`} className="text-sage-600 hover:text-terracotta-600 transition-colors">
+                    {EMAIL}
+                  </a>
+                </div>
+              </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-sage-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Instagram className="h-6 w-6 text-sage-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sage-800 mb-1">Social Media</h3>
-                    <p className="text-sage-600">@iha_art</p>
-                    <p className="text-sm text-sage-500">Follow for daily inspiration</p>
-                  </div>
+              <div className="flex items-start">
+                <div className="bg-terracotta-100 p-3 rounded-full text-terracotta-600 mr-4">
+                  <FaClock className="w-5 h-5" />
+                </div>
+                <div>
+                  <Typography variant="subtitle1" className="text-sage-800">Working Hours</Typography>
+                  <Typography variant="body2" className="text-sage-600">
+                    Monday - Friday: 11:00 AM - 6:00 PM<br />
+                    Sunday: Workshop Day
+                  </Typography>
                 </div>
               </div>
             </div>
 
-            {/* FAQ */}
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-serif font-bold text-sage-800 mb-6">
-                Frequently Asked Questions
-              </h2>
-              
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold text-sage-800 mb-2">
-                    Do I need any prior art experience?
-                  </h3>
-                  <p className="text-sage-600 text-sm">
-                    Not at all! Our workshops are designed for all skill levels, and we provide gentle guidance throughout.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-sage-800 mb-2">
-                    What materials do I need to bring?
-                  </h3>
-                  <p className="text-sage-600 text-sm">
-                    All materials are provided. Just bring yourself and an open mind!
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-sage-800 mb-2">
-                    Can I book a private workshop?
-                  </h3>
-                  <p className="text-sage-600 text-sm">
-                    Yes! We offer private sessions for individuals and groups. Contact us for pricing and availability.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-sage-800 mb-2">
-                    What is your cancellation policy?
-                  </h3>
-                  <p className="text-sage-600 text-sm">
-                    You can cancel up to 48 hours before the workshop for a full refund.
-                  </p>
-                </div>
+            <div className="pt-4">
+              <Typography variant="subtitle1" className="text-sage-800 mb-3">Follow Us</Typography>
+              <div className="flex space-x-6">
+                <a 
+                  href="https://www.facebook.com/ihabyhimani" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sage-600 hover:text-terracotta-600 transition-colors duration-200"
+                  aria-label="Facebook"
+                >
+                  <FaFacebook className="w-6 h-6" />
+                </a>
+                <a 
+                  href={INSTAGRAM_URL} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sage-600 hover:text-terracotta-600 transition-colors duration-200"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="w-6 h-6" />
+                </a>
+                <a 
+                  href={YOUTUBE_URL} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sage-600 hover:text-terracotta-600 transition-colors duration-200"
+                  aria-label="YouTube"
+                >
+                  <FaYoutube className="w-6 h-6" />
+                </a>
+                <a 
+                  href={`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sage-600 hover:text-green-600 transition-colors duration-200"
+                  aria-label="WhatsApp"
+                >
+                  <span className="text-2xl">💬</span>
+                </a>
               </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Map Section */}
+        <Section className="mt-16">
+          <Typography variant="h2" className="text-center mb-8">Find Us on the Map</Typography>
+          <a 
+            href="https://maps.app.goo.gl/j2FiE1SpgeVajYM59" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block rounded-lg overflow-hidden shadow-lg hover:opacity-90 transition-opacity duration-200"
+          >
+            <div className="aspect-w-16 aspect-h-9 w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.010012408241!2d76.7976291!3d30.7398199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fed49fc031591%3A0x778b8cf3ee4e6e12!2sIha%20by%20Himani!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                width="100%"
+                height="450"
+                style={{ border: 0, pointerEvents: 'none' }}
+                allowFullScreen
+                loading="lazy"
+                title="Iha by Himani Art Studio Location"
+              ></iframe>
+            </div>
+          </a>
+        </Section>
+      </Container>
+
+      {/* FAQ Section */}
+      <Section className="bg-sage-50">
+        <Container>
+          <Typography variant="h2" className="text-center mb-12">Frequently Asked Questions</Typography>
+          
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-lg font-semibold text-sage-800 mb-2">Do I need any prior art experience?</h3>
+              <p className="text-sage-600">Not at all! Our workshops are designed for all skill levels, and we provide gentle guidance throughout.</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-lg font-semibold text-sage-800 mb-2">What materials do I need to bring?</h3>
+              <p className="text-sage-600">All materials are provided. Just bring yourself and an open mind!</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-lg font-semibold text-sage-800 mb-2">Can I book a private workshop?</h3>
+              <p className="text-sage-600">Yes! We offer private sessions for individuals and groups. Contact us for pricing and availability.</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-lg font-semibold text-sage-800 mb-2">What is your cancellation policy?</h3>
+              <p className="text-sage-600">The ticket amount is non-refundable, and no refunds will be issued for any reason.</p>
             </div>
           </div>
-        </div>
-      </div>
+        </Container>
+      </Section>
 
       {/* CTA Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="bg-gradient-to-r from-terracotta-600 to-terracotta-700 rounded-2xl p-8 lg:p-12 text-center">
-          <h2 className="text-3xl font-serif font-bold text-white mb-4">
-            Ready to Start Creating?
-          </h2>
-          <p className="text-xl text-terracotta-100 mb-8">
-            Don't wait to begin your artistic journey. Browse our upcoming workshops and find your perfect creative experience.
-          </p>
-          <a
-            href="/workshops"
-            className="inline-block bg-white text-terracotta-600 px-8 py-4 rounded-xl hover:bg-cream-50 transition-colors duration-200 font-medium"
+      <Section className="bg-terracotta-600 text-white">
+        <Container className="text-center">
+          <Typography variant="h2" className="text-white mb-6">Ready to Start Creating?</Typography>
+          <Typography variant="body1" className="text-terracotta-100 mb-8 max-w-2xl mx-auto">
+            Book a workshop or private session today and begin your artistic journey with us.
+          </Typography>
+          <Button 
+            variant="secondary" 
+            size="lg"
+            className="mx-auto"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            View Workshops
-          </a>
-        </div>
-      </section>
-    </div>
+            Book Now
+          </Button>
+        </Container>
+      </Section>
+    </>
   );
 };
 

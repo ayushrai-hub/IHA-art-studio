@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
+import Gallery from './pages/Gallery';
 import Workshops from './pages/Workshops';
 import WorkshopDetail from './pages/WorkshopDetail';
 import Blog from './pages/Blog';
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/workshops" element={<Workshops />} />
             <Route path="/workshop/:id" element={<WorkshopDetail />} />
             <Route path="/blog" element={<Blog />} />

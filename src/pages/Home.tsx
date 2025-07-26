@@ -35,7 +35,7 @@ const Home = () => {
                   to="/about"
                   className="inline-flex items-center px-8 py-4 border-2 border-sage-300 text-sage-700 font-medium rounded-xl hover:bg-sage-50 transition-all duration-200"
                 >
-                  My Story
+                  About me
                 </Link>
               </div>
             </div>
@@ -84,14 +84,14 @@ const Home = () => {
                   <div className="w-12 h-12 bg-sage-100 rounded-lg flex items-center justify-center mx-auto mb-2">
                     <Calendar className="h-6 w-6 text-sage-600" />
                   </div>
-                  <div className="text-2xl font-bold text-sage-800">50+</div>
+                  <div className="text-2xl font-bold text-sage-800">40+</div>
                   <div className="text-sm text-sage-600">Workshops</div>
                 </div>
                 <div className="text-center">
                   <div className="w-12 h-12 bg-terracotta-100 rounded-lg flex items-center justify-center mx-auto mb-2">
                     <Palette className="h-6 w-6 text-terracotta-600" />
                   </div>
-                  <div className="text-2xl font-bold text-sage-800">3</div>
+                  <div className="text-2xl font-bold text-sage-800">3+</div>
                   <div className="text-sm text-sage-600">Years</div>
                 </div>
               </div>
@@ -99,7 +99,7 @@ const Home = () => {
                 to="/about"
                 className="inline-flex items-center text-terracotta-600 hover:text-terracotta-700 font-medium transition-colors duration-200"
               >
-                Read my full story
+                Read about Himani's space
                 <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </div>

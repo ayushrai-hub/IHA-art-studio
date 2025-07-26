@@ -265,7 +265,7 @@ const WorkshopDetail = () => {
                         <li>Scan the QR code with Google Pay, PhonePe, or Paytm</li>
                         <li>Pay ₹{workshop.price}</li>
                         <li>Take a screenshot of payment confirmation</li>
-                        <li>Send the screenshot to <strong>hello@iha-art.com</strong></li>
+                        <li>Send the screenshot to <strong>ihabyhimani@gmail.com</strong></li>
                         <li>You'll receive a confirmation email within 24 hours</li>
                       </ol>
                     </div>
