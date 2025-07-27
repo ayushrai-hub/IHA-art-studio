@@ -69,7 +69,7 @@ const Reviews = () => {
             <div className="text-sage-600">Average Rating</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-terracotta-600 mb-2">40+</div>
+            <div className="text-4xl font-bold text-terracotta-600 mb-2">50+</div>
             <div className="text-sage-600">Workshops Completed</div>
           </div>
           <div className="text-center">

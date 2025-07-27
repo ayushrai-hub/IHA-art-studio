@@ -20,7 +20,7 @@ const About = () => {
                 href="https://wa.me/918360967932"
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm"
+                className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 hover:text-white transition-colors text-sm"
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp
@@ -29,7 +29,7 @@ const About = () => {
                 href="https://www.instagram.com/ihabyhimani/"
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors text-sm"
+                className="inline-flex items-center px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 hover:text-white transition-colors text-sm"
               >
                 <Instagram className="w-4 h-4 mr-2" />
                 Instagram

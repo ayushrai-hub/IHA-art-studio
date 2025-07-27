@@ -84,14 +84,14 @@ const Home = () => {
                   <div className="w-12 h-12 bg-sage-100 rounded-lg flex items-center justify-center mx-auto mb-2">
                     <Calendar className="h-6 w-6 text-sage-600" />
                   </div>
-                  <div className="text-2xl font-bold text-sage-800">40+</div>
+                  <div className="text-2xl font-bold text-sage-800">50+</div>
                   <div className="text-sm text-sage-600">Workshops</div>
                 </div>
                 <div className="text-center">
                   <div className="w-12 h-12 bg-terracotta-100 rounded-lg flex items-center justify-center mx-auto mb-2">
                     <Palette className="h-6 w-6 text-terracotta-600" />
                   </div>
-                  <div className="text-2xl font-bold text-sage-800">3+</div>
+                  <div className="text-2xl font-bold text-sage-800">4+</div>
                   <div className="text-sm text-sage-600">Years</div>
                 </div>
               </div>
